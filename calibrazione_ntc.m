@@ -6,7 +6,7 @@ global data lastData;
 N = 25;
 data = {};
 
-myMQTT = mqtt('tcp://192.168.43.96', ...
+myMQTT = mqtt('tcp://192.168.1.7', ...
     'ClientID', 'MATLABClient', ...
     'Port', 1883 ...
 );
@@ -28,7 +28,8 @@ function myMQTT_OnData(topic, msg)
 
     jsondata = jsondecode(msg);
     
-    refTemp = queryVISAResource("KEYSIGHT_34465A", "MEAS:TEMP? TC, K", "%f"); % lettura temperatura di riferimento
+    refTemp=23;
+    %% refTemp = queryVISAResource("KEYSIGHT_34465A", "MEAS:TEMP? TC, K", "%f"); % lettura temperatura di riferimento
     row = {datestr(now, 'yyyy-mm-ddTHH:MM:SS.FFF'), refTemp, jsondata.tH2O, jsondata.tOil};
     
     disp(row);

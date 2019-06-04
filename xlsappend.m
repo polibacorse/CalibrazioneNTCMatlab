@@ -73,7 +73,7 @@ end
 try
     disp(file);
     if (~isfile(file))
-        xlswrite(file, {'Timestamp', 'Ref Temp', 'ECU Temp'}, 'Foglio1');
+        xlswrite(file, {'Timestamp', 'Ref Temp', 'ECU tH2O','ECU tOil' }, 'Foglio1');
     end;
     
     % handle requested Excel workbook filename.
