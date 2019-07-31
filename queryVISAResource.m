@@ -5,7 +5,8 @@
 
 function a = queryVISAResource(VISARN, q, ansfmt)
 
-%delete(instrfind);
+delete(instrfind);
+%delete(instrfind('Name', VISARN));
 instr = visa('ni', VISARN);
 fopen(instr);
 

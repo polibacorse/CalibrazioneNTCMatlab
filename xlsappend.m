@@ -71,7 +71,7 @@ end
 
 % Handle input.
 try
-    disp(file);
+    %disp(file);
     if (~isfile(file))
         xlswrite(file, {'Timestamp', 'Ref Temp', 'ECU tH2O','ECU tOil' }, 'Foglio1');
     end;
