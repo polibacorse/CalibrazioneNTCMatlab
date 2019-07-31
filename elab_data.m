@@ -51,13 +51,15 @@ Tref = meas(:, 2);
 TH20 = meas(:, 3);
 TOil = meas(:, 4);
 
-x0 = [1, 1, 0, 0];
-x0 =  1.0e+11 *[ 0.7593    0.0009   -0.3383    1.1709];
-options = optimset;
+x0 = [1, 1, 0, 0]; % initial conditions
+x0 =  1.0e+11 *[ 0.7593    0.0009   -0.3383    1.1709]; % post elab initial conditions, for easier evaluation
+%%option definition used to configure fminsearch function (see fminsearch documentation)
+options = optimset; 
 options.TolX = 1e-10;
 options.TolFun = 1e-4;
 options.MaxIter = 5000;
 options.MaxFunEvals = 5000;
+%%
 Tc = TOil; % Change this value to TH20 to calibrate water temperature sensor
 [x, erms, exitflag, output] = fminsearch(@meanerror, x0, options, Tref, Tc)  %finding values of G1,G2,A1,A2 that keep erms at its minimum
 G1 = x(1);
